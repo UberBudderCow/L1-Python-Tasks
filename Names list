@@ -1,0 +1,57 @@
+names =  ["Evi", "Madeleine", "Dan", "Kelsey", "Cayden", "Hayley", "Darian"]
+print(names)
+
+#Sorts the names alphabetically
+names.sort()
+print(names)
+
+#Tells the user if the inputed name is in the list
+name = input("Enter a name")
+in_list = name in names
+if in_list == True:
+  print("{} is in the list".format(name))
+else:
+  print("{} is not in the list".format(name))
+
+input_false = True
+swapped_name = False
+
+#Swaps a name in the list with the user's name if they wish to do so
+user_name = input("Enter your name")
+answer = input("{}, would you like to replace a name in the list with your name?".format(user_name))
+while True:
+  if answer == "yes":
+    swapped_name = True
+    while input_false == True:
+      print("Which position of a name in the list would you like to replace your name with?")
+      try:
+        list_name_pos = int(input("positions are 0-6"))
+        if list_name_pos >= 0 and list_name_pos <= 6:
+          input_false = False
+        else:
+          print("please enter a number 0-6")
+      except:
+        print("Please enter a ->number<- 0-6")
+    names[list_name_pos] = user_name
+    print(names)
+    break
+  elif answer == "no":
+    break
+  else:
+    print("Please enter yes or no")
+    answer = input("{}, would you like to replace a name in the list with your name?".format(user_name))
+
+#Adds the user's name to the list if they wish to do so
+if swapped_name == False:
+  input_false = True
+  answer = input("{}, would you like to add your name to the list?".format(user_name))
+  while True:
+    if answer == "yes":
+      names.append(user_name)
+      print(names)
+      break
+    elif answer == "no":
+      break
+    else:
+      print("Please enter yes or no")
+      answer = input("{}, would you like to replace a name in the list with your name?".format(user_name))
